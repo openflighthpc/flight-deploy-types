@@ -1,5 +1,7 @@
 ---
-configuration_questions:
+name: openflight-slurm
+description: 'Description for openflight slurm cluster type.'
+questions:
   - id: cluster_name
     text: 'Cluster name:'
     default: my-cluster
