@@ -1,5 +1,6 @@
 ---
-name: openflight-slurm
+id: openflight-slurm
+name: 'Openflight Slurm'
 description: 'Description for openflight slurm cluster type.'
 questions:
   - id: cluster_name
