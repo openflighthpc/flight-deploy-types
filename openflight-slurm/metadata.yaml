@@ -4,6 +4,7 @@ name: 'Openflight Slurm'
 description: 'Description for openflight slurm cluster type.'
 questions:
   - id: cluster_name
+    env: CLUSTERNAME
     text: 'Cluster name:'
     default: my-cluster
     validation:
@@ -12,6 +13,7 @@ questions:
       message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
       - and _.'
   - id: ip_range
+    env: IPRANGE
     text: 'IP range:'
     validation:
       type: string
