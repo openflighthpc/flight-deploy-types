@@ -5,9 +5,14 @@ then
   yum install -y ansible
 fi
 
-# check if git repo exists
 current_dir=$PWD
-cd /home/openflight
-git clone https://github.com/openflighthpc/openflight-ansible-playbook || (cd openflight-ansible-playbook ; git pull)
+cd $DEPLOYDIR || return
+if [ ! -d openflight-ansible-playbook/.git ]
+then
+  git clone https://github.com/openflighthpc/openflight-ansible-playbook
+fi
+cd openflight-ansible-playbook
+git pull
+git checkout dev/node-at-a-time
 cd $current_dir
 
