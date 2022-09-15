@@ -16,10 +16,16 @@ questions:
     env: DEFAULT_USERNAME
     text: 'Default user:'
     default: flight
+    validation:
+      type: string
   - id: default_password
     env: DEFAULT_PASSWORD
     text: 'Set user password to:'
     default: 0penfl1ght
+    validation:
+      type: string
   - id: access_host
     env: ACCESS_HOST
     text: 'IP or FQDN for Web Access:'
+    validation:
+      type: string
