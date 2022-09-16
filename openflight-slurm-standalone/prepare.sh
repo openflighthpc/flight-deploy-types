@@ -28,13 +28,9 @@ then
   echo "  IdentityFile $KEYNAME" >> /root/.ssh/config
 fi
 
-current_dir=$PWD
-cd $DEPLOYDIR || return
 if [ ! -d openflight-slurm-standalone/.git ]
 then
   git clone https://github.com/openflighthpc/openflight-slurm-standalone
 fi
 cd openflight-slurm-standalone
 git pull
-cd $current_dir
-
