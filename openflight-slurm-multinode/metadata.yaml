@@ -1,0 +1,44 @@
+---
+id: openflight-slurm-multinode
+name: 'Openflight Slurm Multinode'
+description: 'A Multi Node Research Environment running SLURM & NFS'
+questions:
+  - id: cluster_name
+    env: CLUSTERNAME
+    text: 'Cluster name:'
+    default: my-cluster
+    validation:
+      type: string
+      format: "^[a-zA-Z0-9_\\-]+$"
+      message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
+      - and _.'
+  - id: login_node
+    env: LOGIN_NODE
+    text: 'Login node:'
+    default: 'chead1'
+    validation:
+      type: string
+  - id: default_username
+    env: DEFAULT_USERNAME
+    text: 'Default user:'
+    default: flight
+    validation:
+      type: string
+  - id: default_password
+    env: DEFAULT_PASSWORD
+    text: 'Set user password to:'
+    default: 0penfl1ght
+    validation:
+      type: string
+  - id: access_host
+    env: ACCESS_HOST
+    text: 'IP or FQDN for Web Access:'
+    validation:
+      type: string
+  - id: compute_ip_range
+    env: COMPUTE_IP_RANGE
+    text: 'IP Range of Compute Nodes:'
+    default: '10.10.0.0/16'
+    validation:
+      type: string
+
