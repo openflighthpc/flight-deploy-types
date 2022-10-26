@@ -42,7 +42,7 @@ questions:
     validation:
       type: string
   - id: hunter_hosts
-    env: hunter_hosts
+    env: HUNTER_HOSTS
     text: 'Create hosts entries from Flight Hunter data?'
     default: true
     validation:
