@@ -14,8 +14,8 @@ questions:
       - and _.'
   - id: login_node
     env: LOGIN_NODE
-    text: 'Login node:'
-    default: 'chead1'
+    text: 'Login node (hostname or flight-hunter label):'
+    default: 'login1'
     validation:
       type: string
   - id: default_username
@@ -41,4 +41,11 @@ questions:
     default: '10.10.0.0/16'
     validation:
       type: string
-
+  - id: hunter_hosts
+    env: HUNTER_HOSTS
+    text: 'Create hosts entries from Flight Hunter data?'
+    default: true
+    validation:
+      type: string
+      format: "^(?i)(true|false)$"
+      message: "Must be either true or false"

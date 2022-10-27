@@ -2,5 +2,5 @@ name: compute
 description: Configure a Compute Node of a Multinode SLURM Research Environment
 group_name: compute
 commands: 
-- main: "ansible-playbook -i $INVFILE --limit $NODE --extra-vars=\"cluster_name=$CLUSTERNAME login_node=$LOGIN_NODE default_username=$DEFAULT_USERNAME default_user_password=$DEFAULT_PASSWORD access_host=$ACCESS_HOST compute_ip_range=$COMPUTE_IP_RANGE\" $RUN_ENV/openflight-slurm-multinode/main.yml" 
-- post: "ansible-playbook -i $INVFILE --extra-vars=\"cluster_name=$CLUSTERNAME login_node=$LOGIN_NODE default_username=$DEFAULT_USERNAME default_user_password=$DEFAULT_PASSWORD access_host=$ACCESS_HOST compute_ip_range=$COMPUTE_IP_RANGE\" --tags update $RUN_ENV/openflight-slurm-multinode/main.yml"
+- main: "ansible-playbook -i $INVFILE --limit $NODE --extra-vars=\"cluster_name=$CLUSTERNAME login_node=$LOGIN_NODE default_username=$DEFAULT_USERNAME default_user_password=$DEFAULT_PASSWORD access_host=$ACCESS_HOST compute_ip_range=$COMPUTE_IP_RANGE hunter_hosts=$HUNTER_HOSTS\" $RUN_ENV/openflight-slurm-multinode/main.yml" 
+- post: "ansible-playbook -i $INVFILE --extra-vars=\"cluster_name=$CLUSTERNAME login_node=$LOGIN_NODE default_username=$DEFAULT_USERNAME default_user_password=$DEFAULT_PASSWORD access_host=$ACCESS_HOST compute_ip_range=$COMPUTE_IP_RANGE hunter_hosts=$HUNTER_HOSTS\" --tags update $RUN_ENV/openflight-slurm-multinode/main.yml"
