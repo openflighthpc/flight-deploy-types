@@ -12,9 +12,15 @@ questions:
       format: "^[a-zA-Z0-9_\\-]+$"
       message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
       - and _.'
-  - id: login_node
-    env: LOGIN_NODE
-    text: 'Login node (hostname or flight-hunter label):'
+  - id: nfs_server
+    env: NFS_SERVER
+    text: 'NFS server (hostname or flight-hunter label):'
+    default: 'login1'
+    validation:
+      type: string
+  - id: slurm_server
+    env: SLURM_SERVER
+    text: 'NFS server (hostname or flight-hunter label):'
     default: 'login1'
     validation:
       type: string
