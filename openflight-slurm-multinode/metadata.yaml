@@ -20,7 +20,7 @@ questions:
       type: string
   - id: slurm_server
     env: SLURM_SERVER
-    text: 'NFS server (hostname or flight-hunter label):'
+    text: 'SLURM server (hostname or flight-hunter label):'
     default: 'login1'
     validation:
       type: string
