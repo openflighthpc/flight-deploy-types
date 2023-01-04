@@ -1,0 +1,34 @@
+---
+id: openflight-kubernetes-multinode
+name: 'Openflight Kubernetes Multinode'
+description: 'A Multi Node Research Environment running Kubernetes'
+questions:
+  - id: cluster_name
+    env: CLUSTERNAME
+    text: 'Cluster name:'
+    default: my-cluster
+    validation:
+      type: string
+      format: "^[a-zA-Z0-9_\\-]+$"
+      message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
+      - and _.'
+  - id: default_username
+    env: DEFAULT_USERNAME
+    text: 'Default user:'
+    default: flight
+    validation:
+      type: string
+  - id: compute_ip_range
+    env: COMPUTE_IP_RANGE
+    text: 'IP Range of Compute Nodes:'
+    default: '10.10.0.0/16'
+    validation:
+      type: string
+  - id: hunter_hosts
+    env: HUNTER_HOSTS
+    text: 'Create hosts entries from Flight Hunter data?'
+    default: true
+    validation:
+      type: string
+      format: "^(?i)(true|false)$"
+      message: "Must be either true or false"
