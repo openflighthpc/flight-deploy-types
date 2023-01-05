@@ -4,4 +4,3 @@ group_name: login
 commands:
 - pre: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-pre.sh"
 - main: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-main.sh"
-- post: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-post.sh"
