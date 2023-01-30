@@ -18,10 +18,33 @@ questions:
     default: flight
     validation:
       type: string
+  - id: default_password
+    env: DEFAULT_PASSWORD
+    text: 'Set user password to:'
+    default: 0penfl1ght
+    validation:
+      type: string
+  - id: nfs_server
+    env: NFS_SERVER
+    text: 'NFS server (hostname or flight-hunter label):'
+    default: 'login1'
+    validation:
+      type: string
+  - id: access_host
+    env: ACCESS_HOST
+    text: 'IP or FQDN for Web Access:'
+    validation:
+      type: string
   - id: compute_ip_range
     env: COMPUTE_IP_RANGE
     text: 'IP Range of Compute Nodes:'
     default: '10.10.0.0/16'
+    validation:
+      type: string
+  - id: pod_ip_range
+    env: POD_IP_RANGE
+    text: 'IP Range of Kubernetes Pods (must not overlap with Compute Node IP Range):'
+    default: '192.168.0.0/16'
     validation:
       type: string
   - id: hunter_hosts

@@ -10,6 +10,9 @@ then
   dnf install -y git
 fi
 
+# NFS utils
+dnf install -y nfs-utils
+
 # Docker Repo
 dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 
