@@ -4,3 +4,4 @@ group_name: worker
 commands: 
 - pre: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-pre.sh"
 - main: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-main.sh"
+priority: 1

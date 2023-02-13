@@ -3,3 +3,4 @@ description: Configure a standalone Single Node Research Environment running SLU
 group_name: local
 commands:
 - main: "ansible-playbook -i $INVFILE --limit $NODE --extra-vars=\"cluster_name=$CLUSTERNAME default_username=$DEFAULT_USERNAME default_user_password=$DEFAULT_PASSWORD access_host=$ACCESS_HOST\" $RUN_ENV/openflight-slurm-standalone/main.yml"
+priority: 0
