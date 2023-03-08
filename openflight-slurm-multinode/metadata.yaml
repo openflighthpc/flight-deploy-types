@@ -47,11 +47,3 @@ questions:
     default: '10.10.0.0/16'
     validation:
       type: string
-  - id: hunter_hosts
-    env: HUNTER_HOSTS
-    text: 'Create hosts entries from Flight Hunter data?'
-    default: true
-    validation:
-      type: string
-      format: "^(?i)(true|false)$"
-      message: "Must be either true or false"
