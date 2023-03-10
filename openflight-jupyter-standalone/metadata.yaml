@@ -1,0 +1,31 @@
+---
+id: openflight-jupyter-standalone
+name: 'Openflight Jupyter Standalone'
+description: 'A Single Node Research Environment running Jupyter Notebook'
+questions:
+  - id: cluster_name
+    env: CLUSTERNAME
+    text: 'Cluster name:'
+    default: my-cluster
+    validation:
+      type: string
+      format: "^[a-zA-Z0-9_\\-]+$"
+      message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
+      - and _.'
+  - id: default_username
+    env: DEFAULT_USERNAME
+    text: 'Default user:'
+    default: flight
+    validation:
+      type: string
+  - id: default_password
+    env: DEFAULT_PASSWORD
+    text: 'Set user password to:'
+    default: 0penfl1ght
+    validation:
+      type: string
+  - id: access_host
+    env: ACCESS_HOST
+    text: 'IP or FQDN for Web Access:'
+    validation:
+      type: string
