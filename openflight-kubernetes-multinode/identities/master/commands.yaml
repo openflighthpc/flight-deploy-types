@@ -3,6 +3,3 @@ apply:
     command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-pre.sh"
   - name: Apply Master Profile 
     command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-main.sh"
-remove:
-  - name: Remove Node from Kubernetes Cluster
-    command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-remove.sh"
