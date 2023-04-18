@@ -1,7 +1,0 @@
-name: login
-description: Configure the Login Node of a Multinode SLURM Research Environment
-group_name: login
-commands:
-- pre: "$RUN_ENV/openflight-slurm-multinode/flight-profile-pre.sh"
-- main: "$RUN_ENV/openflight-slurm-multinode/flight-profile-main.sh"
-- post: "$RUN_ENV/openflight-slurm-multinode/flight-profile-post.sh"
