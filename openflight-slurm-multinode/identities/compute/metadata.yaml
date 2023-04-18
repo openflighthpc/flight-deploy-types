@@ -1,0 +1,3 @@
+name: compute
+description: Configure a Compute Node of a Multinode SLURM Research Environment
+group_name: compute

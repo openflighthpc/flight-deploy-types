@@ -1,0 +1,3 @@
+name: master
+description: Configure the Master Node of a Multinode Kubernetes Research Environment
+group_name: master

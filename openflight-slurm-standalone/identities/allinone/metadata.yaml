@@ -1,0 +1,3 @@
+name: all-in-one
+description: Configure a standalone Single Node Research Environment running SLURM
+group_name: local
