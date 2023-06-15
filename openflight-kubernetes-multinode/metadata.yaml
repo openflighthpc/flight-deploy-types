@@ -41,7 +41,7 @@ questions:
     env: COMPUTE_IP_RANGE
     text: 'IP Range of Compute Nodes:'
     default: '10.10.0.0/16'
-    default_smart: "ipcalc $(/usr/sbin/ip addr show $(/usr/sbin/ip -o -4 route show to default |awk '{print $5}') |grep 'inet ' |sed 's.*inet //g;s/ brd.*//g') |grep '^Network:' |awk '{print $2}'"
+    default_smart: "ipcalc $(/usr/sbin/ip addr show $(/usr/sbin/ip -o -4 route show to default |awk '{print $5}') |grep 'inet ' |sed 's/.*inet //g;s/ brd.*//g') |grep '^Network:' |awk '{print $2}'"
     validation:
       type: string
   - id: pod_ip_range
