@@ -27,5 +27,6 @@ questions:
   - id: access_host
     env: ACCESS_HOST
     text: 'IP or FQDN for Web Access:'
+    default_smart: "curl -s ifconfig.me"
     validation:
       type: string
