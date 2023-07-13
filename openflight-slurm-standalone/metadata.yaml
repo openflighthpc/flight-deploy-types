@@ -27,6 +27,6 @@ questions:
   - id: access_host
     env: ACCESS_HOST
     text: 'IP or FQDN for Web Access:'
-    default_smart: "AWS=$(curl --connect-timeout 1 -s --fail http://169.254.169.254/latest/meta-data/public-ipv4) AZURE=$(curl --connect-timeout 1 -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g') DEF=$(curl -s ifconfig.me) CLOUD=${AWS:-$AZURE} ; echo ${CLOUD:-$DEF}"
+    default_smart: "AWS=$(curl --connect-timeout 1 -s --fail http://169.254.169.254/latest/meta-data/public-ipv4) AZURE=$(curl --connect-timeout 1 -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g') CLOUD=${AWS:-$AZURE} ; echo ${CLOUD:-$(curl -s ifconfig.me)}"
     validation:
       type: string
