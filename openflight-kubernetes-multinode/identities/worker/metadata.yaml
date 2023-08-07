@@ -1,3 +1,5 @@
 name: worker
 description: Configure a Worker Node of a Multinode Kubernetes Research Environment
 group_name: worker
+dependencies:
+  - master
