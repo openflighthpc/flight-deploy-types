@@ -1,3 +1,5 @@
 name: login
 description: Configure the Login Node of a Multinode SLURM Research Environment
 group_name: login
+conflicts:
+  - login
