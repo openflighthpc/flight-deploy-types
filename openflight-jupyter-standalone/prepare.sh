@@ -10,7 +10,7 @@ then
   dnf install -y git
 fi
 
-dnf install -y python39
+dnf install -y python39 python3-pip
 # unsure if the -y option works with pip install
 pip3.9 install jupyterlab 
 
