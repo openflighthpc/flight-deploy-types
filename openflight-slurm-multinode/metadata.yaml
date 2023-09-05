@@ -26,6 +26,18 @@ questions:
     default_smart: "HUNT=$(/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}') HOST=$(hostname -s); echo ${HUNT:-$HOST}"
     validation:
       type: string
+  - id: ipa_server
+    env: IPA_SERVER
+    text: 'IPA server (FQDN or flight-hunter label):'
+    default: 'infra01'
+    validation:
+      type: string
+  - id: secure_admin_password
+    env: SECURE_ADMIN_PASSWORD
+    text: 'IPA Secure Admin Password:'
+    default: "MySecurePassword"
+    validation:
+      type: string
   - id: default_username
     env: DEFAULT_USERNAME
     text: 'Default user:'

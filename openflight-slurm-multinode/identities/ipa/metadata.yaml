@@ -1,0 +1,5 @@
+name: ipa
+description: Configure the IPA Server of a Multinode SLURM Research Environment
+group_name: ipa
+conflicts:
+  - ipa
