@@ -14,6 +14,11 @@ dnf install -y munge munge-libs perl-Switch numactl flight-slurm flight-slurm-de
 
 dnf install -y nfs-utils
 
+# IPA
+dnf module reset -y idm
+dnf module enable -y idm:DL1
+dnf module install -y idm:DL1/dns
+
 if [ ! -d openflight-slurm-multinode/.git ]
 then
   git clone https://github.com/openflighthpc/openflight-slurm-multinode
