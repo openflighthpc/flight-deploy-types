@@ -19,6 +19,8 @@ dnf module reset -y idm
 dnf module enable -y idm:DL1
 dnf module install -y idm:DL1/dns
 
+ansible-galaxy collection install freeipa.ansible_freeipa
+
 if [ ! -d openflight-slurm-multinode/.git ]
 then
   git clone https://github.com/openflighthpc/openflight-slurm-multinode
