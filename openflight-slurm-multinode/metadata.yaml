@@ -40,6 +40,15 @@ questions:
     default: 'infra01'
     validation:
       type: string
+  - id: ipa_domain
+    env: IPA_DOMAIN
+    text: 'IPA domain:'
+    default: 'cluster.example.com'
+    default_smart: 'hostname -d'
+    validation:
+      type: string
+      format: "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$"
+      message: "Domain name must contain at least 2 elements separated by '.' (e.g. 'example.com')"
   - id: secure_admin_password
     env: SECURE_ADMIN_PASSWORD
     text: 'IPA Secure Admin Password:'
