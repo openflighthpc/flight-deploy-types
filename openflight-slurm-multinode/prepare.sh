@@ -19,7 +19,6 @@ dnf module reset -y idm
 dnf module enable -y idm:DL1
 dnf module install -y idm:DL1/dns
 
-ansible-galaxy collection install freeipa.ansible_freeipa
 # ensure v6.6.0 or above installed for append option in ipa_hostgroup
 ansible-galaxy collection install 'community.general:>6.6.0' --upgrade
 
