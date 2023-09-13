@@ -16,20 +16,24 @@ questions:
     env: NFS_SERVER
     text: 'NFS server (hostname or flight-hunter label):'
     default: 'login1'
-    default_smart: "HUNT=$(/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}') HOST=$(hostname -s); echo ${HUNT:-$HOST}"
+    default_smart:
+      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
+      - "hostname -s"
     validation:
       type: string
   - id: slurm_server
     env: SLURM_SERVER
     text: 'SLURM server (hostname or flight-hunter label):'
     default: 'login1'
-    default_smart: "HUNT=$(/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}') HOST=$(hostname -s); echo ${HUNT:-$HOST}"
+    default_smart: 
+      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
+      - "hostname -s"
     validation:
       type: string
   - id: ipa_use
     env: IPA_USE
-    text: 'Setup IPA?'
-    default: 'true'
+    text: 'Setup Multi User Environment with IPA?'
+    default: 'false'
     validation:
       type: string
       format: "^(?i)(true|false)$"
@@ -44,7 +48,8 @@ questions:
     env: IPA_DOMAIN
     text: 'IPA domain:'
     default: 'cluster.example.com'
-    default_smart: 'hostname -d'
+    default_smart:
+      - 'hostname -d'
     validation:
       type: string
       format: "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$"
@@ -57,26 +62,34 @@ questions:
       type: string
   - id: default_username
     env: DEFAULT_USERNAME
-    text: 'Default user:'
+    text: 'Local user login:'
     default: flight
+    default_smart:
+      - "cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1 |head -1" # First local user with UID of 1000 or higher
     validation:
       type: string
   - id: default_password
     env: DEFAULT_PASSWORD
-    text: 'Set user password to:'
+    text: 'Set local user password to:'
     default: 0penfl1ght
     validation:
       type: string
   - id: access_host
     env: ACCESS_HOST
     text: 'IP or FQDN for Web Access:'
-    default_smart: "AWS=$(curl --connect-timeout 1 -s --fail http://169.254.169.254/latest/meta-data/public-ipv4) AZURE=$(curl --connect-timeout 1 -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g') CLOUD=${AWS:-$AZURE} ; echo ${CLOUD:-$(curl -s ifconfig.me)}"
+    default_smart:
+      - "curl -s --fail http://169.254.169.254/latest/meta-data/public-hostname |grep -v novalocal" # Public Hostname from AWS/OpenStack Metadata (excluding default OpenStack domain name) 
+      - "curl -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g'" # Public Hostname from Azure Metadata
+      - "curl -s --fail http://169.254.169.254/latest/meta-data/public-ipv4" # IP from AWS/OpenStack Metadata
+      - "curl -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g'" # IP from Azure Metadata
+      - "curl -s ifconfig.me" # External IP curl 
     validation:
       type: string
   - id: compute_ip_range
     env: COMPUTE_IP_RANGE
     text: 'IP Range of Compute Nodes:'
     default: '10.10.0.0/16'
-    default_smart: "ipcalc $(/usr/sbin/ip addr show $(/usr/sbin/ip -o -4 route show to default |awk '{print $5}') |grep 'inet ' |sed 's/.*inet //g;s/ brd.*//g') |grep '^Network:' |awk '{print $2}'"
+    default_smart:
+      - "ipcalc $(/usr/sbin/ip addr show $(/usr/sbin/ip -o -4 route show to default |awk '{print $5}') |grep 'inet ' |sed 's/.*inet //g;s/ brd.*//g') |grep '^Network:' |awk '{print $2}'"
     validation:
       type: string
