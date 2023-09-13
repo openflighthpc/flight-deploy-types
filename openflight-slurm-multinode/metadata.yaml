@@ -21,6 +21,8 @@ questions:
       - "hostname -s"
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: slurm_server
     env: SLURM_SERVER
     text: 'SLURM server (hostname or flight-hunter label):'
@@ -30,6 +32,8 @@ questions:
       - "hostname -s"
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: ipa_use
     env: IPA_USE
     text: 'Setup Multi User Environment with IPA?'
@@ -44,6 +48,8 @@ questions:
     default: 'infra01'
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: ipa_domain
     env: IPA_DOMAIN
     text: 'IPA domain:'
@@ -60,6 +66,8 @@ questions:
     default: "MySecurePassword"
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: default_username
     env: DEFAULT_USERNAME
     text: 'Local user login:'
@@ -68,6 +76,8 @@ questions:
       - "cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1 |head -1" # First local user with UID of 1000 or higher
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: default_password
     env: DEFAULT_PASSWORD
     text: 'Set local user password to:'
@@ -84,6 +94,8 @@ questions:
       - "curl -s ifconfig.me" # External IP curl 
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: compute_ip_range
     env: COMPUTE_IP_RANGE
     text: 'IP Range of Compute Nodes:'
@@ -92,3 +104,5 @@ questions:
       - "ipcalc $(/usr/sbin/ip addr show $(/usr/sbin/ip -o -4 route show to default |awk '{print $5}') |grep 'inet ' |sed 's/.*inet //g;s/ brd.*//g') |grep '^Network:' |awk '{print $2}'"
     validation:
       type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
