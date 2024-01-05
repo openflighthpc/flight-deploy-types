@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if ! command -v ansible &> /dev/null
 then
   dnf install -y ansible
