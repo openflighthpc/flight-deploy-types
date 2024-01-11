@@ -15,9 +15,13 @@ dnf install -y munge munge-libs perl-Switch numactl flight-slurm flight-slurm-de
 dnf install -y nfs-utils
 
 # IPA
-dnf module reset -y idm
-dnf module enable -y idm:DL1
-dnf module install -y idm:DL1/dns
+if [[ $CENTOS_VER == 0 ]] ; then 
+    dnf -y install freeipa-server freeipa-server-dns freeipa-client
+else
+    dnf module reset -y idm
+    dnf module enable -y idm:DL1
+    dnf module install -y idm:DL1/dns
+fi
 
 # ensure v6.6.0 or above installed for append option in ipa_hostgroup
 ansible-galaxy collection install 'community.general:>6.6.0' --upgrade
