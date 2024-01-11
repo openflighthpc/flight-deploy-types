@@ -36,38 +36,41 @@ questions:
       message: "Cannot be empty or contain whitespace"
   - id: ipa_use
     env: IPA_USE
+    type: conditional
     text: 'Setup Multi User Environment with IPA?'
     default: 'false'
     validation:
-      type: string
-      format: "^(?i)(true|false)$"
       message: "Must be either true or false"
-  - id: ipa_server
-    env: IPA_SERVER
-    text: 'IPA server (short hostname or flight-hunter label):'
-    default: 'infra01'
-    validation:
-      type: string
-      format: "^(\\S)+$"
-      message: "Cannot be empty or contain whitespace"
-  - id: ipa_domain
-    env: IPA_DOMAIN
-    text: 'IPA domain:'
-    default: 'cluster.example.com'
-    default_smart:
-      - 'hostname -d'
-    validation:
-      type: string
-      format: "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$"
-      message: "Domain name must contain at least 2 elements separated by '.' (e.g. 'example.com')"
-  - id: secure_admin_password
-    env: SECURE_ADMIN_PASSWORD
-    text: 'IPA Secure Admin Password:'
-    default: "MySecurePassword"
-    validation:
-      type: string
-      format: "^(\\S)+$"
-      message: "Cannot be empty or contain whitespace"
+    questions:
+      - id: ipa_server
+        env: IPA_SERVER
+        text: 'IPA server (short hostname or flight-hunter label):'
+        default: 'infra01'
+        where: true
+        validation:
+          type: string
+          format: "^(\\S)+$"
+          message: "Cannot be empty or contain whitespace"
+      - id: ipa_domain
+        env: IPA_DOMAIN
+        text: 'IPA domain:'
+        default: 'cluster.example.com'
+        default_smart:
+          - 'hostname -d'
+        where: true
+        validation:
+          type: string
+          format: "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$"
+          message: "Domain name must contain at least 2 elements separated by '.' (e.g. 'example.com')"
+      - id: secure_admin_password
+        env: SECURE_ADMIN_PASSWORD
+        text: 'IPA Secure Admin Password:'
+        default: "MySecurePassword"
+        where: true
+        validation:
+          type: string
+          format: "^(\\S)+$"
+          message: "Cannot be empty or contain whitespace"
   - id: default_username
     env: DEFAULT_USERNAME
     text: 'Local user login:'
