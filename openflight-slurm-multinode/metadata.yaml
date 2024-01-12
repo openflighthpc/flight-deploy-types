@@ -12,28 +12,6 @@ questions:
       format: "^[a-zA-Z0-9_\\-]+$"
       message: 'Invalid cluster name: %{value}. Must contain only alphanumeric characters,
       - and _.'
-  - id: nfs_server
-    env: NFS_SERVER
-    text: 'NFS server (hostname or flight-hunter label):'
-    default: 'login1'
-    default_smart:
-      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
-      - "hostname -s"
-    validation:
-      type: string
-      format: "^(\\S)+$"
-      message: "Cannot be empty or contain whitespace"
-  - id: slurm_server
-    env: SLURM_SERVER
-    text: 'SLURM server (hostname or flight-hunter label):'
-    default: 'login1'
-    default_smart: 
-      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
-      - "hostname -s"
-    validation:
-      type: string
-      format: "^(\\S)+$"
-      message: "Cannot be empty or contain whitespace"
   - id: ipa_use
     env: IPA_USE
     type: boolean
@@ -42,15 +20,6 @@ questions:
     validation:
       message: "Must be either true or false"
     questions:
-      - id: ipa_server
-        env: IPA_SERVER
-        text: 'IPA server (short hostname or flight-hunter label):'
-        default: 'infra01'
-        where: true
-        validation:
-          type: string
-          format: "^(\\S)+$"
-          message: "Cannot be empty or contain whitespace"
       - id: ipa_domain
         env: IPA_DOMAIN
         text: 'IPA domain:'
