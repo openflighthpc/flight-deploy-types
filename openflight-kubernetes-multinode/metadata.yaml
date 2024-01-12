@@ -28,17 +28,6 @@ questions:
       type: string
       format: "^(\\S)+$"
       message: "Cannot be empty or contain whitespace"
-  - id: nfs_server
-    env: NFS_SERVER
-    text: 'NFS server (hostname or flight-hunter label):'
-    default: 'login1'
-    default_smart:
-      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
-      - "hostname -s"
-    validation:
-      type: string
-      format: "^(\\S)+$"
-      message: "Cannot be empty or contain whitespace"
   - id: access_host
     env: ACCESS_HOST
     text: 'IP or FQDN for Web Access:'
