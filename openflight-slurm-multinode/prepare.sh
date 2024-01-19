@@ -15,7 +15,8 @@ dnf install -y munge munge-libs perl-Switch numactl flight-slurm flight-slurm-de
 dnf install -y nfs-utils
 
 # IPA
-if [[ $CENTOS_VER == 0 ]] ; then 
+CENTOS_VER=$(rpm --eval '%{centos_ver}')
+if [[ $CENTOS_VER == 9 ]] ; then 
     dnf -y install freeipa-server freeipa-server-dns freeipa-client
 else
     dnf module reset -y idm
