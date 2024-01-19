@@ -36,7 +36,7 @@ questions:
       message: "Cannot be empty or contain whitespace"
   - id: ipa_use
     env: IPA_USE
-    type: conditional
+    type: boolean
     text: 'Setup Multi User Environment with IPA?'
     default: 'false'
     validation:
