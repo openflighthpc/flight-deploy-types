@@ -19,6 +19,11 @@ questions:
     default: 'false'
     validation:
       message: "Must be either true or false"
+    dependencies:
+      - identity: login
+        depend_on:
+          - ipa
+        where: true
     questions:
       - id: ipa_domain
         env: IPA_DOMAIN
