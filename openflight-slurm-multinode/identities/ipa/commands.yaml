@@ -1,7 +1,7 @@
 apply:
   - name: Perform Pre-Application Configuration
     command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-pre.sh"
-  - name: Apply Login Profile
+  - name: Apply IPA Profile
     command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-main.sh"
   - name: Perform Post-Application Configuration
     command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-post.sh"
