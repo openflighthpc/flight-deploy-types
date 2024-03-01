@@ -24,6 +24,10 @@ questions:
         depend_on:
           - ipa
         where: true
+      - identity: storage
+        depend_on:
+          - ipa
+        where: true
     questions:
       - id: ipa_domain
         env: IPA_DOMAIN
