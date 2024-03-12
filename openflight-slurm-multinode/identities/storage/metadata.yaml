@@ -1,5 +1,5 @@
 name: storage
-description: Configure the Storage Server of a Multinode SLURM Research Environment
+description: Configure an Optional Storage Server of a Multinode SLURM Research Environment
 group_name: storage
 conflicts:
   - storage

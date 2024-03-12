@@ -77,6 +77,17 @@ questions:
       type: string
       format: "^(\\S)+$"
       message: "Cannot be empty or contain whitespace"
+  - id: nfs_server
+    env: NFS_SERVER
+    text: 'Default NFS server (hostname or flight-hunter label - **MUST** match name to be used with "profile apply"):'
+    default: 'login1'
+    default_smart:
+      - "/opt/flight/bin/flight hunter list --plain |grep $(hostname -f) |awk '{print $5}'"
+      - "hostname -s"
+    validation:
+      type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
   - id: compute_ip_range
     env: COMPUTE_IP_RANGE
     text: 'IP Range of Compute Nodes:'
