@@ -87,15 +87,3 @@ questions:
       type: string
       format: "^(\\S)+$"
       message: "Cannot be empty or contain whitespace"
-  - id: separate_nfs_server
-    env: SEPARATE_NFS
-    type: boolean
-    text: 'Use Separate Host as Storage Server (Otherwise use Login Server)?'
-    default: 'false'
-    validation:
-      message: "Must be either true or false"
-    dependencies:
-      - identity: login
-        depend_on:
-          - storage
-        where: true
