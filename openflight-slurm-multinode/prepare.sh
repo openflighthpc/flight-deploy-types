@@ -27,6 +27,10 @@ fi
 # ensure v6.6.0 or above installed for append option in ipa_hostgroup
 ansible-galaxy collection install 'community.general:>6.6.0' --upgrade
 
+# Ensure jmespath installed for use of json_query, using python ansible is looking at
+PYTHON="$(ansible --version |grep 'python version' |sed 's/.*(//g;s/)//g')
+$PYTHON -m pip install jmespath 
+
 if [ ! -d openflight-slurm-multinode/.git ]
 then
   git clone https://github.com/openflighthpc/openflight-slurm-multinode
