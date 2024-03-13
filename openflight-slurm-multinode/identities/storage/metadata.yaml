@@ -1,3 +1,5 @@
 name: storage
 description: Configure an Optional Storage Server of a Multinode SLURM Research Environment
 group_name: storage
+dependencies:
+  - login
