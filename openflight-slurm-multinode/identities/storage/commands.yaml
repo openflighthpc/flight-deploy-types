@@ -5,3 +5,6 @@ apply:
     command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-main.sh"
   - name: Perform Post-Application Configuration
     command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-post.sh"
+remove:
+  - name: Remove Storage Node
+    command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-remove.sh"
