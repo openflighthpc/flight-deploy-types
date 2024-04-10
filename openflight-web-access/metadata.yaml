@@ -1,0 +1,33 @@
+---
+id: openflight-web-access
+name: 'Openflight Web Access'
+description: 'A Single Node Web Access Environment'
+questions:
+  - id: default_username
+    env: DEFAULT_USERNAME
+    text: 'The user to access web suite with:'
+    default: flight
+    validation:
+      type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
+  - id: default_password
+    env: DEFAULT_PASSWORD
+    text: 'Set user password to:'
+    default: 0penfl1ght
+    validation:
+      type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"
+  - id: access_host
+    env: ACCESS_HOST
+    text: 'IP or FQDN for Web Access:'
+    default_smart: 
+      - "curl -s --fail http://169.254.169.254/latest/meta-data/public-hostname |grep -v novalocal" # Public Hostname from AWS/OpenStack Metadata (excluding default OpenStack domain name)
+      - "curl -s --fail http://169.254.169.254/latest/meta-data/public-ipv4" # IP from AWS/OpenStack Metadata
+      - "curl -s --fail -H Metadata:true http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0?api-version=2021-12-13 |sed 's/.*publicIpAddress\":\"//g;s/\".*//g'" # IP from Azure Metadata
+      - "curl -s ifconfig.me" # External IP curl
+    validation:
+      type: string
+      format: "^(\\S)+$"
+      message: "Cannot be empty or contain whitespace"

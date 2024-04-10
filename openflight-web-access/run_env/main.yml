@@ -1,0 +1,8 @@
+- name: Configure Web Access Node
+  hosts: web
+  remote_user: root
+  gather_facts: True
+  roles:
+    - openflight.generic.flightenv
+    - openflight.generic.flightweb
+    - openflight.generic.user
