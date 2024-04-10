@@ -3,6 +3,7 @@
   remote_user: root
   gather_facts: True
   roles:
+    - flightwebminimal
     - openflight.generic.flightenv
     - openflight.generic.flightweb
     - openflight.generic.user
