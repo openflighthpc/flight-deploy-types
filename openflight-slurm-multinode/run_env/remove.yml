@@ -1,0 +1,10 @@
+- name: Configure Multi Node Research Environment
+  hosts: all
+  remote_user: root
+  gather_facts: True
+  roles:
+    - openflight.cluster.slurm
+    - openflight.generic.nfs
+    - role: openflight.generic.ipa
+      when: ipa_use |bool
+    - openflight.generic.hunter
