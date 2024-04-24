@@ -13,7 +13,5 @@
     - role: openflight.generic.flightweb
       when: "'login' in group_names"
     - role: openflight.generic.ipa
-      when:
-        - "'ipa' in group_names"
-        - ipa_use |bool
+      when: ipa_use |bool
     - openflight.generic.user
