@@ -5,6 +5,6 @@
   roles:
     - openflight.cluster.slurm
     - openflight.generic.nfs
+    - openflight.generic.hunter
     - role: openflight.generic.ipa
       when: ipa_use |bool
-    - openflight.generic.hunter
