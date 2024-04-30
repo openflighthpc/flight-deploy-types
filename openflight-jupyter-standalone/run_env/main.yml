@@ -1,0 +1,9 @@
+- name: Configure Single Node Research Environment
+  hosts: all
+  remote_user: root
+  gather_facts: True
+  roles:
+    - openflight.generic.flightenv
+    - openflight.cluster.jupyter
+    - openflight.generic.flightweb
+    - openflight.generic.user
