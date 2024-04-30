@@ -42,9 +42,9 @@ systemctl stop containerd
 # Tidy Up
 rm -f /etc/yum.repos.d/kubernetes.repo /etc/yum.repos.d/docker-ce.repo
 
-if [ ! -d openflight-kubernetes-multinode/.git ]
-then
-  git clone https://github.com/openflighthpc/openflight-kubernetes-multinode
-fi
-cd openflight-kubernetes-multinode
-git pull
+# Ensure jmespath installed for use of json_query, using python ansible is looking at
+PYTHON="$(ansible --version |grep 'python version' |sed 's/.*(//g;s/)//g')"
+$PYTHON -m pip install jmespath
+
+# Ensure OpenFlight collection is present
+ansible-galaxy collection install git+https://github.com/openflighthpc/openflight-ansible-collection.git#/openflight/
