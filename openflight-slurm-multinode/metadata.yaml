@@ -104,7 +104,7 @@ questions:
   - id: configure_rack_view
     env: CONFIGURE_RACK_VIEW
     type: boolean
-    text: 'Configure virtual data-centre rack view? 
+    text: 'Configure virtual data-centre rack view?' 
     default: 'true'
     validation: 
       message: "Must be either true or false" 
