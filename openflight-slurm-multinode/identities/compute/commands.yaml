@@ -1,10 +1,10 @@
 apply:
   - name: Perform Pre-Application Configuration
-    command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-pre.sh"
+    command: "$RUN_ENV/flight-profile-pre.sh"
   - name: Apply Compute Profile
-    command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-main.sh"
+    command: "$RUN_ENV/flight-profile-main.sh"
   - name: Perform Post-Application Configuration
-    command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-post.sh"
+    command: "$RUN_ENV/flight-profile-post.sh"
 remove:
   - name: Remove Compute Node
-    command: "$RUN_ENV/openflight-slurm-multinode/flight-profile-remove.sh"
+    command: "$RUN_ENV/flight-profile-remove.sh"

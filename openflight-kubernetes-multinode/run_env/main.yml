@@ -1,0 +1,13 @@
+- name: Configure Multi Node Research Environment
+  hosts: all
+  remote_user: root
+  gather_facts: True
+  roles:
+    - role: openflight.generic.hunter
+      when: hunter_hosts |bool
+    - openflight.cluster.k8s
+    - openflight.generic.nfs
+    - openflight.generic.flightenv
+    - role: openflight.generic.flightweb
+      when: "'master' in group_names"
+    - openflight.generic.user

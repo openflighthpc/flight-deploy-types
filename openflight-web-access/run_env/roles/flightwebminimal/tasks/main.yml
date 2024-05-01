@@ -1,0 +1,5 @@
+- name: Disable Unused Web-Suite Applications
+  command: mv /opt/flight/opt/www/landing-page/default/content/apps/job-script.md /opt/flight/opt/www/landing-page/default/content/apps/job-script.md.disabled
+  args:
+    creates: /opt/flight/opt/www/landing-page/default/content/apps/job-script.md.disabled
+    removes: /opt/flight/opt/www/landing-page/default/content/apps/job-script.md

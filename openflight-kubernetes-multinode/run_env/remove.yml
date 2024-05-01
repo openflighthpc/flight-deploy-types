@@ -1,0 +1,8 @@
+- name: Remove Node from Multi Node Research Environment
+  hosts: all
+  remote_user: root
+  gather_facts: True
+  roles:
+    - openflight.cluster.k8s
+    - openflight.generic.nfs
+    - openflight.generic.hunter

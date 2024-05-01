@@ -14,9 +14,5 @@ dnf install -y python39 python3-pip
 # unsure if the -y option works with pip install
 pip3.9 install jupyterlab 
 
-if [ ! -d openflight-jupyter-standalone/.git ]
-then
-  git clone https://github.com/openflighthpc/openflight-jupyter-standalone
-fi
-cd openflight-jupyter-standalone
-git pull
+# Ensure OpenFlight collection is present
+ansible-galaxy collection install git+https://github.com/openflighthpc/openflight-ansible-collection.git#/openflight/

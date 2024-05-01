@@ -23,11 +23,11 @@ dnf install -y docker-ce containerd
 cat << EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kubelet kubeadm kubectl
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 
 # Kubernetes Packages
@@ -42,9 +42,9 @@ systemctl stop containerd
 # Tidy Up
 rm -f /etc/yum.repos.d/kubernetes.repo /etc/yum.repos.d/docker-ce.repo
 
-if [ ! -d openflight-kubernetes-multinode/.git ]
-then
-  git clone https://github.com/openflighthpc/openflight-kubernetes-multinode
-fi
-cd openflight-kubernetes-multinode
-git pull
+# Ensure jmespath installed for use of json_query, using python ansible is looking at
+PYTHON="$(ansible --version |grep 'python version' |sed 's/.*(//g;s/)//g')"
+$PYTHON -m pip install jmespath
+
+# Ensure OpenFlight collection is present
+ansible-galaxy collection install git+https://github.com/openflighthpc/openflight-ansible-collection.git#/openflight/

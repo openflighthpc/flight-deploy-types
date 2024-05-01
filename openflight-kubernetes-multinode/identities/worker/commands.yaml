@@ -1,8 +1,8 @@
 apply:
   - name: Perform Pre-Application Tasks
-    command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-pre.sh"
+    command: "$RUN_ENV/flight-profile-pre.sh"
   - name: Apply Worker Profile 
-    command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-main.sh"
+    command: "$RUN_ENV/flight-profile-main.sh"
 remove:
   - name: Remove Node from Kubernetes Cluster
-    command: "$RUN_ENV/openflight-kubernetes-multinode/flight-profile-remove.sh"
+    command: "$RUN_ENV/flight-profile-remove.sh"
