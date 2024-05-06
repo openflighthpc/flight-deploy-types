@@ -94,13 +94,6 @@ questions:
       type: string
       format: "^(\\S)+$"
       message: "Cannot be empty or contain whitespace"
-  - id: configure_monitor
-    env: CONFIGURE_MONITOR
-    type: boolean
-    text: 'Configure monitoring for cluster with Grafana & Prometheus?'
-    default: 'true'
-    validation:
-      message: "Must be either true or false"
   - id: configure_rack_view
     env: CONFIGURE_RACK_VIEW
     type: boolean
