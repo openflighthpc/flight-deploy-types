@@ -94,10 +94,10 @@ questions:
       type: string
       format: "^(\\S)+$"
       message: "Cannot be empty or contain whitespace"
-  - id: configure_monitor
-    env: CONFIGURE_MONITOR
+  - id: configure_rack_view
+    env: CONFIGURE_RACK_VIEW
     type: boolean
-    text: 'Configure monitoring for cluster with Grafana & Prometheus?'
+    text: 'Configure virtual data-centre rack view?' 
     default: 'true'
-    validation:
-      message: "Must be either true or false"
+    validation: 
+      message: "Must be either true or false" 
